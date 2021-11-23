@@ -1,7 +1,11 @@
 import './App.css';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { useState } from 'react';
+import Card from '../Card';
 
 const App = () => {
+    const [results, setResults] = useState([]);
+
     return (
         <div className="app">
             <h1 className="app__heading">book finder</h1>
@@ -18,6 +22,11 @@ const App = () => {
                     </span>
                 </button>
             </form>
+            <div className="app__output">
+                {results.map((item) => (
+                    <Card key={item.id} item={item} />
+                ))}
+            </div>
         </div>
     );
 };
