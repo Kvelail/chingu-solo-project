@@ -153,6 +153,18 @@ body {
     transform: scale(1.1);
 }
 
+.app__error-box {
+    display: flex;
+    justify-content: center;
+    width: 860px;
+}
+
+.app__error {
+    font-size: 1.5rem;
+    color: crimson;
+    font-weight: bold;
+}
+
 /* Media Queries */
 
 @media (max-width: 600px) {

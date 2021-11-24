@@ -9,6 +9,7 @@ const App = () => {
     const [results, setResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const getResults = async () => {
         const key = 'AIzaSyBckMQCTLmYOP-M2DecRj13OGe9SBfWlSc';
@@ -23,8 +24,15 @@ const App = () => {
             const response = await axios.get(base + query);
             const data = response.data.items;
 
-            setLoading(false);
-            setResults(data);
+            if (data) {
+                setError(false);
+                setLoading(false);
+                setResults(data);
+            } else {
+                setError(true);
+                setLoading(false);
+                setResults(null);
+            }
         } catch (e) {
             console.log(e);
         }
@@ -63,11 +71,19 @@ const App = () => {
                 </button>
             </form>
             <div className="app__output">
+                {error && (
+                    <div className="app__error-box">
+                        <p className="app__error">
+                            Wrong input, please try again.
+                        </p>
+                    </div>
+                )}
                 {loading ? (
                     <div className="app__loading">
                         <Spinner />
                     </div>
                 ) : (
+                    results &&
                     results.map((item) => (
                         <Card key={item.id} item={item} />
                     ))
