@@ -27,7 +27,7 @@ body {
 }
 
 .app {
-    max-width: 986px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 5rem 2rem;
 }
@@ -73,11 +73,12 @@ body {
     justify-content: flex-end;
     align-items: center;
     font-size: 2.5rem;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .app__submit-span:hover {
     color: #fff;
+    transform: scale(1.1);
 }
 
 .app__output {
@@ -89,6 +90,7 @@ body {
 .app__card {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
+    align-items: center;
     padding: 2rem;
     color: #333;
     border-radius: 0.7rem;
@@ -106,7 +108,7 @@ body {
 .app__img {
     width: 100%;
     object-fit: cover;
-    margin-top: -3rem;
+
     border-radius: 0.7rem;
 }
 
@@ -118,6 +120,18 @@ body {
 .app__author,
 .app__publisher {
     font-size: 1.4rem;
+}
+
+.app__span {
+    font-weight: bold;
+}
+
+.app__span::after {
+    content: ', ';
+}
+
+.app__span:last-of-type::after {
+    content: '';
 }
 
 .app__publisher {
@@ -138,3 +152,13 @@ body {
 .app__btn:hover {
     transform: scale(1.1);
 }
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+    .app__output {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* End of Media Queries */
