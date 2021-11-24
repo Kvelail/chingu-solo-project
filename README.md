@@ -1,4 +1,33 @@
-# **TITLE**
+# **Title**
+
+Chingu Solo Project - Book Finder Application
+
+# **Overview**
+
+I started this project because I want to join Chingu teams to level up my knowledge and gain experience. In addition maybe my code can help someone else in building their own projects.
+
+# **Features**
+
+Simple Book Finder application based on Google Books API. User has the option to search over books he enters in search field and get more details about the book.
+
+# **Running The Project**
+
+_Live version:_
+
+**Running the project locally**
+
+_From this repo:_
+
+1. Clone this project locally
+2. Run _npm install_ in your bash / command line
+3. Run _npm start_ in your bash / command line
+
+# **Dependencies**
+
+-   react
+-   react-DOM
+-   react-icons
+-   axios
 
 # Getting Started with Create React App
 
