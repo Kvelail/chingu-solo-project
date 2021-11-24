@@ -3,20 +3,31 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import Card from '../Card';
 import axios from 'axios';
+import Spinner from '../Spinner';
 
 const App = () => {
     const [results, setResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const getResults = async () => {
         const key = 'AIzaSyBckMQCTLmYOP-M2DecRj13OGe9SBfWlSc';
 
-        const base = 'https://www.googleapis.com/books/v1/volumes?';
-        const query = `q=${searchTerm}&key=${key}&maxResults=40`;
+        setLoading(true);
 
-        const data = await (await axios.get(base + query)).data.items;
+        try {
+            const base =
+                'https://www.googleapis.com/books/v1/volumes?';
+            const query = `q=${searchTerm}&key=${key}&maxResults=40`;
 
-        setResults(data);
+            const response = await axios.get(base + query);
+            const data = response.data.items;
+
+            setLoading(false);
+            setResults(data);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const handleSubmit = (e) => {
@@ -52,10 +63,15 @@ const App = () => {
                 </button>
             </form>
             <div className="app__output">
-                {results &&
+                {loading ? (
+                    <div className="app__loading">
+                        <Spinner />
+                    </div>
+                ) : (
                     results.map((item) => (
                         <Card key={item.id} item={item} />
-                    ))}
+                    ))
+                )}
             </div>
         </div>
     );
