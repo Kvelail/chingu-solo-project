@@ -19,8 +19,8 @@ _Live version:_
 _From this repo:_
 
 1. Clone this project locally
-2. Run _npm install_ in your bash / command line
-3. Run _npm start_ in your bash / command line
+2. Run `npm install` in your bash / command line
+3. Run `npm start` in your bash / command line
 
 # **Dependencies**
 
