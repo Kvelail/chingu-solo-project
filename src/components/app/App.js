@@ -21,6 +21,13 @@ const App = () => {
                 'https://www.googleapis.com/books/v1/volumes?';
             const query = `q=${searchTerm}&key=${key}&maxResults=40`;
 
+            if (searchTerm === '') {
+                setError(true);
+                setLoading(false);
+                setResults(null);
+                return;
+            }
+
             const response = await axios.get(base + query);
             const data = response.data.items;
 
