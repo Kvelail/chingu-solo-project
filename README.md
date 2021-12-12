@@ -1,6 +1,5 @@
 # **Title**
 
-a
 Chingu Solo Project - Book Finder Application
 
 # **Overview**
