@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Card from '../Card';
 import axios from 'axios';
 import Spinner from '../Spinner';
+import Footer from '../Footer';
 
 const App = () => {
     const [results, setResults] = useState([]);
@@ -17,8 +18,7 @@ const App = () => {
         setLoading(true);
 
         try {
-            const base =
-                'https://www.googleapis.com/books/v1/volumes?';
+            const base = 'https://www.googleapis.com/books/v1/volumes?';
             const query = `q=${searchTerm}&key=${key}&maxResults=40`;
 
             if (searchTerm === '') {
@@ -60,42 +60,41 @@ const App = () => {
     };
 
     return (
-        <div className="app">
-            <h1 className="app__heading">book finder</h1>
-            <form className="app__form" onSubmit={handleSubmit}>
+        <div className='app'>
+            <h1 className='app__heading'>book finder</h1>
+            <form className='app__form' onSubmit={handleSubmit}>
                 <input
-                    name="book"
-                    type="text"
-                    className="app__input"
-                    placeholder="Enter book name..."
+                    name='book'
+                    type='text'
+                    className='app__input'
+                    placeholder='Enter book name...'
                     autoFocus
                     onChange={handleChange}
                 />
-                <button className="app__submit">
-                    <span className="app__submit-span">
+                <button className='app__submit'>
+                    <span className='app__submit-span'>
                         <BsFillArrowRightCircleFill />
                     </span>
                 </button>
             </form>
-            <div className="app__output">
+            <div className='app__output'>
                 {error && (
-                    <div className="app__error-box">
-                        <p className="app__error">
+                    <div className='app__error-box'>
+                        <p className='app__error'>
                             Wrong input, please try again.
                         </p>
                     </div>
                 )}
                 {loading ? (
-                    <div className="app__loading">
+                    <div className='app__loading'>
                         <Spinner />
                     </div>
                 ) : (
                     results &&
-                    results.map((item) => (
-                        <Card key={item.id} item={item} />
-                    ))
+                    results.map((item) => <Card key={item.id} item={item} />)
                 )}
             </div>
+            <Footer />
         </div>
     );
 };
